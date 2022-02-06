@@ -1,0 +1,27 @@
+import tweepy
+import json 
+
+
+#api keys 
+api_key = ""
+api_secrets = ""
+access_token = ""
+access_secret = ""
+
+# Authenticate to Twitter
+auth = tweepy.OAuthHandler(api_key,api_secrets)
+auth.set_access_token(access_token,access_secret)
+ 
+api = tweepy.API(auth)
+ 
+try:
+    api.verify_credentials()
+    print('Successful Authentication')
+except:
+    print('Failed authentication')
+
+
+user = api.get_user(screen_name='')
+print(user.name)
+print(user.description)
+print(user.location)
